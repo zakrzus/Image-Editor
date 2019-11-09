@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpenedPicture));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.operationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,11 +38,11 @@
             this.usualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grayScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posteryzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.picture = new System.Windows.Forms.PictureBox();
             this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sizeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fitContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picture = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
@@ -121,17 +122,6 @@
             this.posteryzacjaToolStripMenuItem.Text = "Posterisation";
             this.posteryzacjaToolStripMenuItem.Click += new System.EventHandler(this.posteryzacjaToolStripMenuItem_Click);
             // 
-            // picture
-            // 
-            this.picture.BackColor = System.Drawing.SystemColors.Control;
-            this.picture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picture.Location = new System.Drawing.Point(0, 24);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(800, 426);
-            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture.TabIndex = 0;
-            this.picture.TabStop = false;
-            // 
             // sizeToolStripMenuItem
             // 
             this.sizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -163,6 +153,17 @@
             this.fitContentToolStripMenuItem.Text = "Fit Content";
             this.fitContentToolStripMenuItem.Click += new System.EventHandler(this.fitContentToolStripMenuItem_Click);
             // 
+            // picture
+            // 
+            this.picture.BackColor = System.Drawing.SystemColors.Control;
+            this.picture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picture.Location = new System.Drawing.Point(0, 0);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(800, 450);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture.TabIndex = 0;
+            this.picture.TabStop = false;
+            // 
             // OpenedPicture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +171,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.picture);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OpenedPicture";
             this.Text = "OpenedPicture";
