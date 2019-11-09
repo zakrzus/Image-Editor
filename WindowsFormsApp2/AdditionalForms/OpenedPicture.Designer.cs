@@ -71,7 +71,7 @@
             // histogramToolStripMenuItem
             // 
             this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
-            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.histogramToolStripMenuItem.Text = "Histogram";
             this.histogramToolStripMenuItem.Click += new System.EventHandler(this.histogramToolStripMenuItem_Click);
             // 
@@ -82,13 +82,13 @@
             this.progowanieToolStripMenuItem,
             this.posteryzacjaToolStripMenuItem});
             this.operacjePunktoweToolStripMenuItem.Name = "operacjePunktoweToolStripMenuItem";
-            this.operacjePunktoweToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.operacjePunktoweToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.operacjePunktoweToolStripMenuItem.Text = "Point operations";
             // 
             // negacjaToolStripMenuItem
             // 
             this.negacjaToolStripMenuItem.Name = "negacjaToolStripMenuItem";
-            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.negacjaToolStripMenuItem.Text = "Negation";
             this.negacjaToolStripMenuItem.Click += new System.EventHandler(this.negacjaToolStripMenuItem_Click);
             // 
@@ -98,27 +98,27 @@
             this.usualToolStripMenuItem,
             this.grayScaleToolStripMenuItem});
             this.progowanieToolStripMenuItem.Name = "progowanieToolStripMenuItem";
-            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.progowanieToolStripMenuItem.Text = "Threshold";
             // 
             // usualToolStripMenuItem
             // 
             this.usualToolStripMenuItem.Name = "usualToolStripMenuItem";
-            this.usualToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.usualToolStripMenuItem.Text = "Usual";
+            this.usualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usualToolStripMenuItem.Text = "Color scale";
             this.usualToolStripMenuItem.Click += new System.EventHandler(this.usualToolStripMenuItem_Click);
             // 
             // grayScaleToolStripMenuItem
             // 
             this.grayScaleToolStripMenuItem.Name = "grayScaleToolStripMenuItem";
-            this.grayScaleToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.grayScaleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.grayScaleToolStripMenuItem.Text = "Gray scale";
             this.grayScaleToolStripMenuItem.Click += new System.EventHandler(this.grayScaleToolStripMenuItem_Click);
             // 
             // posteryzacjaToolStripMenuItem
             // 
             this.posteryzacjaToolStripMenuItem.Name = "posteryzacjaToolStripMenuItem";
-            this.posteryzacjaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.posteryzacjaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.posteryzacjaToolStripMenuItem.Text = "Posterisation";
             this.posteryzacjaToolStripMenuItem.Click += new System.EventHandler(this.posteryzacjaToolStripMenuItem_Click);
             // 
@@ -157,9 +157,9 @@
             // 
             this.picture.BackColor = System.Drawing.SystemColors.Control;
             this.picture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picture.Location = new System.Drawing.Point(0, 0);
+            this.picture.Location = new System.Drawing.Point(0, 24);
             this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(800, 450);
+            this.picture.Size = new System.Drawing.Size(800, 426);
             this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;

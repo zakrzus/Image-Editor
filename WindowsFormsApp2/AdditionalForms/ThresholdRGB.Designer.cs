@@ -50,7 +50,6 @@
             this.redTrackBar.Name = "redTrackBar";
             this.redTrackBar.Size = new System.Drawing.Size(205, 45);
             this.redTrackBar.TabIndex = 1;
-            this.redTrackBar.Scroll += new System.EventHandler(this.redTrackBar_Scroll);
             // 
             // pictureBox1
             // 
@@ -88,7 +87,6 @@
             this.greenTrackBar.Name = "greenTrackBar";
             this.greenTrackBar.Size = new System.Drawing.Size(205, 45);
             this.greenTrackBar.TabIndex = 5;
-            this.greenTrackBar.Scroll += new System.EventHandler(this.greenTrackBar_Scroll);
             // 
             // blueTrackBar
             // 
@@ -97,7 +95,6 @@
             this.blueTrackBar.Name = "blueTrackBar";
             this.blueTrackBar.Size = new System.Drawing.Size(205, 45);
             this.blueTrackBar.TabIndex = 6;
-            this.blueTrackBar.Scroll += new System.EventHandler(this.blueTrackBar_Scroll);
             // 
             // label2
             // 

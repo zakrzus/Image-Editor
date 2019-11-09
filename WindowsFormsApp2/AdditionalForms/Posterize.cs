@@ -27,7 +27,8 @@ namespace WindowsFormsApp2.AdditionalForms
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            int trackbar = trackBar1.Value;           
+            int trackbar = trackBar1.Value;
+            label3.Text = trackbar.ToString();
             if (pictureBox1.Image != null)
             {
                 Bitmap img = new Bitmap(_pic);

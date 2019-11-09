@@ -25,9 +25,24 @@ namespace WindowsFormsApp2.AdditionalForms
             pictureBox1.Image = _pic;
             Bitmap img = new Bitmap(pictureBox1.Image);
             postProcImg = new Image<Bgr, Byte>(img);
+            redTrackBar.Scroll += Scroll;
+            blueTrackBar.Scroll += Scroll;
+            greenTrackBar.Scroll += Scroll;          
         }
 
-
+        private new void Scroll(object sender, EventArgs e)
+        {
+            int R = redTrackBar.Value;
+            int G = greenTrackBar.Value;
+            int B = blueTrackBar.Value;
+            if (postProcImg != null)
+            {
+                using (Image<Bgr, Byte> Color = postProcImg.ThresholdBinary(new Bgr(B, G, R), new Bgr(255, 255, 255)))
+                {
+                    pictureBox1.Image = Color.ToBitmap();
+                }
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,49 +51,7 @@ namespace WindowsFormsApp2.AdditionalForms
             Bitmap img = new Bitmap(pictureBox1.Image);
             postProc.picture.Image = img;
             postProc.Show();
-        }
-
-        private void redTrackBar_Scroll(object sender, EventArgs e)
-        {
-            int R = redTrackBar.Value;
-            int G = greenTrackBar.Value;
-            int B = blueTrackBar.Value;
-            if (postProcImg != null)
-            {
-                using (Image<Bgr, Byte> Color = postProcImg.ThresholdBinary(new Bgr(B, G, R), new Bgr(255, 255, 255)))
-                {
-                    pictureBox1.Image = Color.ToBitmap();
-                }
-            }
-        }
-
-        private void greenTrackBar_Scroll(object sender, EventArgs e)
-        {
-            int R = redTrackBar.Value;
-            int G = greenTrackBar.Value;
-            int B = blueTrackBar.Value;
-            if (postProcImg != null)
-            {
-                using (Image<Bgr, Byte> Color = postProcImg.ThresholdBinary(new Bgr(B, G, R), new Bgr(255, 255, 255)))
-                {
-                    pictureBox1.Image = Color.ToBitmap();
-                }
-            }
-        }
-
-        private void blueTrackBar_Scroll(object sender, EventArgs e)
-        {
-            int R = redTrackBar.Value;
-            int G = greenTrackBar.Value;
-            int B = blueTrackBar.Value;
-            if (postProcImg != null)
-            {
-                using (Image<Bgr, Byte> Color = postProcImg.ThresholdBinary(new Bgr(B, G, R), new Bgr(255, 255, 255)))
-                {
-                    pictureBox1.Image = Color.ToBitmap();
-                }
-            }
-        }
+        } 
     
     }
     
