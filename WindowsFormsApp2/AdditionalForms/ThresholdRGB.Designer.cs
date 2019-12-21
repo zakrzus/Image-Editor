@@ -37,6 +37,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.redLabel = new System.Windows.Forms.Label();
+            this.greenLabel = new System.Windows.Forms.Label();
+            this.blueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.redTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.greenTrackBar)).BeginInit();
@@ -123,11 +126,41 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Blue";
             // 
+            // redLabel
+            // 
+            this.redLabel.AutoSize = true;
+            this.redLabel.Location = new System.Drawing.Point(56, 19);
+            this.redLabel.Name = "redLabel";
+            this.redLabel.Size = new System.Drawing.Size(13, 13);
+            this.redLabel.TabIndex = 10;
+            this.redLabel.Text = "0";
+            // 
+            // greenLabel
+            // 
+            this.greenLabel.AutoSize = true;
+            this.greenLabel.Location = new System.Drawing.Point(65, 70);
+            this.greenLabel.Name = "greenLabel";
+            this.greenLabel.Size = new System.Drawing.Size(13, 13);
+            this.greenLabel.TabIndex = 11;
+            this.greenLabel.Text = "0";
+            // 
+            // blueLabel
+            // 
+            this.blueLabel.AutoSize = true;
+            this.blueLabel.Location = new System.Drawing.Point(56, 118);
+            this.blueLabel.Name = "blueLabel";
+            this.blueLabel.Size = new System.Drawing.Size(13, 13);
+            this.blueLabel.TabIndex = 12;
+            this.blueLabel.Text = "0";
+            // 
             // ThresholdRGB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 346);
+            this.Controls.Add(this.blueLabel);
+            this.Controls.Add(this.greenLabel);
+            this.Controls.Add(this.redLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -160,5 +193,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label redLabel;
+        private System.Windows.Forms.Label greenLabel;
+        private System.Windows.Forms.Label blueLabel;
     }
 }

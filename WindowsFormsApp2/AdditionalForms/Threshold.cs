@@ -14,7 +14,7 @@ namespace WindowsFormsApp2.AdditionalForms
 {
     public partial class Threshold : Form
     {
-        Image<Gray, Byte> postProcImg;
+        Image<Gray, Byte> postProcImg;       
         Image _pic;
         Form _parent;
         public Threshold(Image pic, Form parent)
@@ -29,7 +29,8 @@ namespace WindowsFormsApp2.AdditionalForms
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            int trackbar = trackBar1.Value;           
+            int trackbar = trackBar1.Value;
+            label3.Text = trackbar.ToString();
             if (postProcImg != null)
             {
                 using (Image<Gray, byte> Gray = postProcImg.ThresholdBinary(new Gray(trackbar), new Gray(255)))

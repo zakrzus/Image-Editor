@@ -69,12 +69,13 @@ namespace WindowsFormsApp2.AdditionalForms
         }
 
         private async void Histogram_Load(object sender, EventArgs e)
-        {           
+        {
+            loading.Visible = true;
             Bitmap image = new Bitmap(_pictureBox.Image);
-            long[] data = await Task.Run(() => GetHistogram(image, _colorParameter));
-            label1.Text = "";
+            long[] data = await Task.Run(() => GetHistogram(image, _colorParameter));          
             HistogramView histogramControl = newHistogramView(data);
             Controls.Add(histogramControl);
+            loading.Visible = false;
         }
 
         private HistogramView newHistogramView(long[] data)

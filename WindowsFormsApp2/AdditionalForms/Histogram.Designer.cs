@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.loading = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.loading)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // loading
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Loading...";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.loading.Image = global::ImageEditor.Properties.Resources.preloader;
+            this.loading.Location = new System.Drawing.Point(0, 0);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(61, 59);
+            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loading.TabIndex = 4;
+            this.loading.TabStop = false;
+            this.loading.Visible = false;
             // 
             // Histogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.loading);
             this.Name = "Histogram";
             this.Text = "Histogram";
             this.Load += new System.EventHandler(this.Histogram_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.loading)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox loading;
     }
 }

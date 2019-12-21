@@ -165,10 +165,10 @@
   <ItemGroup>
     <Content Include="Dapino-Summer-Holiday-Photo.ico" />
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\preloader.gif" />
+    <None Include="Resources\tenor.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>

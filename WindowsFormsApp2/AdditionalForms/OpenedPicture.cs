@@ -12,6 +12,8 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.UI;
 using ImageMagick;
+using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace WindowsFormsApp2.AdditionalForms
 {
@@ -25,8 +27,9 @@ namespace WindowsFormsApp2.AdditionalForms
         {
             _name = fileName;
             _parent = parent;
-            _path = path;
+            _path = path;       
             InitializeComponent();
+            loading.Visible = false;
             this.Text = _name;
             picture.Image = Image.FromFile(_path);
         }
@@ -39,29 +42,6 @@ namespace WindowsFormsApp2.AdditionalForms
             InitializeComponent();
             this.Text = _name;
             picture.Image = _inputImg;
-        }
-
-        private void histogramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Bitmap image = new Bitmap(picture.Image);
-            if (Methods.isGrayScale(image))
-            {
-                Histogram alphaHistogram = new Histogram(picture, Color.Black, 'X');
-                alphaHistogram.MdiParent = _parent;
-                alphaHistogram.Show();
-            }
-            else
-            {
-                Histogram redHistogram = new Histogram(picture, Color.Red, 'R');
-                Histogram greenHistogram = new Histogram(picture, Color.Green, 'G');
-                Histogram blueHistogram = new Histogram(picture, Color.Blue, 'B');
-                redHistogram.MdiParent = _parent;
-                greenHistogram.MdiParent = _parent;
-                blueHistogram.MdiParent = _parent;
-                redHistogram.Show();
-                greenHistogram.Show();
-                blueHistogram.Show();
-            }
         }
 
         private void negacjaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +82,131 @@ namespace WindowsFormsApp2.AdditionalForms
         private void autoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             picture.SizeMode = PictureBoxSizeMode.CenterImage;
+        }
+
+        private async void skeletonizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenedPicture postProc = new OpenedPicture(picture.Image, "Skletonize of " + _name, _parent);
+            postProc.MdiParent = _parent;
+            postProc.picture.Visible = false;
+            postProc.loading.Visible = true;
+            postProc.Show();
+            Bitmap img = new Bitmap(picture.Image);
+            img = await Task.Run(() => Methods.Skelatanize(img));
+            postProc.loading.Visible = false;
+            postProc.picture.Visible = true;
+            postProc.picture.Image = img;                     
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_path != null)
+            {
+                string ext = System.IO.Path.GetExtension(_path);
+                string newName = _path.Replace(ext, "") + "_copied" + ext;
+                try
+                {
+                    picture.Image.Save(newName);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Lack of permisions. " + ex.Message);
+                }
+            }
+            else
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = "C:\\Documents";
+                saveFileDialog.Filter = "bmp (*.bmp)|*.bmp|jpeg (*.jpeg)|*.jpeg|png (*.png)|*.png|tiff (*.tiff)|*.tiff";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                ImageFormat format = ImageFormat.Bmp;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    switch (saveFileDialog.FilterIndex)
+                    {
+                        case 1:
+                            format = ImageFormat.Bmp;
+                            break;
+                        case 2:
+                            format = ImageFormat.Jpeg;
+                            break;
+                        case 3:
+                            format = ImageFormat.Png;
+                            break;
+                        case 4:
+                            format = ImageFormat.Tiff;
+                            break;
+                    }
+                    this.picture.Image.Save(saveFileDialog.FileName, format);
+                    _path = saveFileDialog.FileName;
+                }
+            }
+        }
+
+        private void equaliseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenedPicture eq = new OpenedPicture(picture.Image, "Eqalization of " + _name, _parent);
+            eq.MdiParent = _parent;
+            Bitmap img = new Bitmap(picture.Image);
+            Image<Gray, Byte> equalize = new Image<Gray, byte>(img);
+            equalize._EqualizeHist();
+            eq.picture.Image = equalize.Bitmap;
+            eq.Show();
+            eq.histogramToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void stretchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenedPicture st = new OpenedPicture(picture.Image, "Stretch of " + _name, _parent);
+            st.MdiParent = _parent;
+            Bitmap img = new Bitmap(picture.Image);
+            Image<Gray, Byte> strech = new Image<Gray, byte>(img);
+            double[] minValue, maxValue;
+            Point[] minLocation;
+            Point[] maxLocation;
+            strech.Mat.MinMax(out minValue, out maxValue, out minLocation, out maxLocation);
+            for (int i = strech.Rows - 1; i >= 0; i--)
+            {
+                for (int j = strech.Cols - 1; j >= 0; j--)
+                {
+                    double newVal = (strech[i, j].Intensity - minValue.First()) * ((255 / maxValue.First()) - minValue.First());
+                    strech[i, j] = new Gray(newVal);
+                }
+            }
+
+            st.picture.Image = strech.Bitmap;
+            st.Show();
+            st.histogramToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void histogramToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Bitmap image = new Bitmap(picture.Image);
+            if (Methods.isGrayScale(image))
+            {
+                Histogram alphaHistogram = new Histogram(picture, Color.Black, 'X');
+                alphaHistogram.MdiParent = _parent;
+                alphaHistogram.Show();
+            }
+            else
+            {
+                Histogram redHistogram = new Histogram(picture, Color.Red, 'R');
+                Histogram greenHistogram = new Histogram(picture, Color.Green, 'G');
+                Histogram blueHistogram = new Histogram(picture, Color.Blue, 'B');
+                redHistogram.MdiParent = _parent;
+                greenHistogram.MdiParent = _parent;
+                blueHistogram.MdiParent = _parent;
+                redHistogram.Show();
+                greenHistogram.Show();
+                blueHistogram.Show();
+            }
         }
     }
 }

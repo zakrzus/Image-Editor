@@ -35,6 +35,9 @@ namespace WindowsFormsApp2.AdditionalForms
             int R = redTrackBar.Value;
             int G = greenTrackBar.Value;
             int B = blueTrackBar.Value;
+            redLabel.Text = R.ToString();
+            greenLabel.Text = G.ToString();
+            blueLabel.Text = B.ToString();
             if (postProcImg != null)
             {
                 using (Image<Bgr, Byte> Color = postProcImg.ThresholdBinary(new Bgr(B, G, R), new Bgr(255, 255, 255)))
